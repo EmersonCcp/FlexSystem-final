@@ -1,12 +1,14 @@
 package vista;
 
 import controlador.MaterialesControl;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.RowSorter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -23,10 +25,12 @@ public class FrmMateriales extends javax.swing.JFrame {
     String factura = null;
     String ma_filtro = "";
     FrmPrincipal frmPrincipal = new FrmPrincipal();
+    FondoPanel fondoPanel = new FondoPanel();
 
     public FrmMateriales() {
 
         initComponents();
+        
         Refresh();
         this.setLocationRelativeTo(null);
         /*ImageIcon imagen=new ImageIcon("src/imagenes/atras.png");
@@ -138,7 +142,7 @@ public class FrmMateriales extends javax.swing.JFrame {
         jmiEliminar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -564,10 +568,6 @@ public class FrmMateriales extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPrecioMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioMaterialActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecioMaterialActionPerformed
-
     private void jmiModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiModificarActionPerformed
         jlbGrabar.setText("    Modificar");
         Integer filaNum = tblMateriales.getSelectedRow();
@@ -631,12 +631,21 @@ public class FrmMateriales extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarMaterialActionPerformed
 
-    private void txtMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaterialActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaterialActionPerformed
+    private void jlbAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbAtrasMouseClicked
+        frmPrincipal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jlbAtrasMouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        this.Refresh();
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jlGrabarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlGrabarMouseEntered
+
+    }//GEN-LAST:event_jlGrabarMouseEntered
 
     private void jlGrabarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlGrabarMouseClicked
-        
+
     }//GEN-LAST:event_jlGrabarMouseClicked
 
     private void jlbGrabarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbGrabarMouseClicked
@@ -698,18 +707,13 @@ public class FrmMateriales extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jlbGrabarMouseClicked
 
-    private void jlGrabarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlGrabarMouseEntered
-        
-    }//GEN-LAST:event_jlGrabarMouseEntered
+    private void txtPrecioMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioMaterialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioMaterialActionPerformed
 
-    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        this.Refresh();
-    }//GEN-LAST:event_jLabel10MouseClicked
-
-    private void jlbAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlbAtrasMouseClicked
-        frmPrincipal.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jlbAtrasMouseClicked
+    private void txtMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaterialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaterialActionPerformed
 
     /**
      * @param args the command line arguments
@@ -744,6 +748,24 @@ public class FrmMateriales extends javax.swing.JFrame {
                 new FrmMateriales().setVisible(true);
             }
         });
+    }
+    
+     public class FondoPanel extends JPanel {
+
+        private Image imagen;
+
+        //...
+        @Override
+        public void paint(Graphics g) {
+            imagen = new ImageIcon(getClass().getResource("/imagenes/fondo.jpg")).getImage();
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(),
+                    this);
+
+            setOpaque(false);
+            super.paint(g);
+        }
+
+        //...
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

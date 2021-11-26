@@ -5,6 +5,7 @@ import controlador.MaterialesDetalleControl;
 
 import controlador.TrabajosControl;
 import datos.Conexion;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,6 +17,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import modelo.Clientes;
 import modelo.MaterialesDetalle;
@@ -35,6 +37,7 @@ public class FrmTrabajos extends javax.swing.JFrame {
     MaterialesDetalleControl mdControl = new MaterialesDetalleControl();
     MaterialesDetalle mdObj;
     ArrayList<MaterialesDetalle> mdLista;
+    FondoPanel fondoPanel = new FondoPanel();
 
     String SSQL;
 //prueba
@@ -42,6 +45,7 @@ public class FrmTrabajos extends javax.swing.JFrame {
     ArrayList<String> listaClientes = new ArrayList<String>();
 
     public FrmTrabajos() {
+        this.setContentPane(fondoPanel);
         initComponents();
         this.setLocationRelativeTo(null);
         this.Refresh();
@@ -791,6 +795,24 @@ public class FrmTrabajos extends javax.swing.JFrame {
                 new FrmTrabajos().setVisible(true);
             }
         });
+    }
+    
+    public class FondoPanel extends JPanel {
+
+        private Image imagen;
+
+        //...
+        @Override
+        public void paint(Graphics g) {
+            imagen = new ImageIcon(getClass().getResource("/imagenes/fondo.jpg")).getImage();
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(),
+                    this);
+
+            setOpaque(false);
+            super.paint(g);
+        }
+
+        //...
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -8,13 +8,17 @@ package vista;
 import vista.FrmMateriales;
 import controlador.MaterialesControl;
 import datos.Conexion;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.RowSorter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -39,8 +43,10 @@ public class GenerarInformeMateriales extends javax.swing.JFrame {
     FiltroMateriales filtroMateriales;
     ArrayList<Materiales> materialesLista;
     String[] categoria = new String[]{"**Seleccione", "Espumas", "Telas", "Maderas", "Otros"};
+    
 
     public GenerarInformeMateriales() {
+        
         initComponents();
         this.Refresh();
         this.setLocationRelativeTo(null);
@@ -104,7 +110,7 @@ public class GenerarInformeMateriales extends javax.swing.JFrame {
         tblMaterialesInformes = new javax.swing.JTable();
         txtID = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Informes");
 
         jPanel1.setBackground(new java.awt.Color(72, 181, 249));
@@ -352,6 +358,7 @@ public class GenerarInformeMateriales extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel filtrar;
